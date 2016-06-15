@@ -43,7 +43,7 @@ RSpec.describe User, type: :model do
     )
     user2.valid?
     expect(
-      uesr2.errors[:email].first
+      user2.errors[:email].first
     ).to eq "has already been taken"
   end
 
@@ -55,7 +55,7 @@ RSpec.describe User, type: :model do
 
   it 'requires the password to match the password confirmation' do
     user = User.new(
-       passowrd: 'password',
+       password: 'password',
        password_confirmation: 'not password'
     )
     user.valid?
