@@ -9,8 +9,10 @@ class SessionsController < ApplicationController
     p params[:user][:password]
     p @user
     if @user.authenticate(params[:user][:password])
+      session[:user] = @user.id
       redirect_to "/users/#{@user.id}"
     else
+      session.clear
       flash[:alert] = 'Invalid'
       render 'sessions/new'
     end
