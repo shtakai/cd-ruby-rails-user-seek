@@ -16,6 +16,12 @@ New Secret
     <% @user.secrets.each do |secret| %>
       <li >
         <%= secret.content %>
+        <form action="/secrets/<%= secret.id %>" method="POST">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="Delete">
+        </form>
+
       </li>
     <% end %>
   </ul>
