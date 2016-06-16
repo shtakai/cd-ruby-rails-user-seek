@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'sessions/new' => 'sessions#new'
   post 'sessions' => 'sessions#create'
   get 'users/new' => 'users#new'
-  #get 'users/edit' => 'users#edit'
+  get 'users/:id/edit' => 'users#edit'
   get 'users/:id' => 'users#show'
   post 'users' => 'users#create'
   delete 'sessions' => 'sessions#destroy'
