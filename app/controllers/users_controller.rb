@@ -21,6 +21,16 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
   end
 
+  def update
+    @user = User.find_by_id(params[:id])
+    if @user.update(user_params)
+      redirect_to "/users/#{@user.id}"
+    else
+      flash[:errors] = @user.errors.messages
+      render 'users/edit'
+    end
+  end
+
   private
 
   def user_params
