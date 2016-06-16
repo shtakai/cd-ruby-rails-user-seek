@@ -9,9 +9,6 @@ class SessionsController < ApplicationController
     p params[:user][:password]
     p @user
     if @user.authenticate(params[:user][:password])
-      logger.debug @user
-      p '---------------------------'
-      p @user.id
       redirect_to "/users/#{@user.id}"
     else
       flash[:alert] = 'Invalid'
