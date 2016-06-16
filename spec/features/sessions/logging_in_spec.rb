@@ -19,6 +19,6 @@ RSpec.describe 'logging in' do
 
   it 'does not sign in user if email/password combination is invalid' do
     log_in @user, 'wrong password'
-    except(page).to have_text 'Invalid'
+    expect(page).to have_text 'Invalid'
   end
 end
