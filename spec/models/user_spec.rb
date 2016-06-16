@@ -39,7 +39,7 @@ RSpec.describe User, type: :model do
        password_confirmation: 'password'
     )
     user2 = User.new(
-       email: user1.email.upcase
+       email: user1.email.downcase
     )
     user2.valid?
     expect(

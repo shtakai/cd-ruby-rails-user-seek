@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  before_create :upcase_email
+  before_create :downcase_email
 
   EMAIL_REGEX = /^([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})$/i
   has_secure_password
@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   private
 
-  def upcase_email
-    self.email = self.email.upcase
+  def downcase_email
+    self.email = self.email.downcase
   end
 end
