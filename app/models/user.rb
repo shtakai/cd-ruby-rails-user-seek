@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   validates :email, format:{with: EMAIL_REGEX, multiline: true}
 
   has_many :secrets
+  has_many :likes, dependent: :destroy
+  has_many :secrets_liked, through: :likes, source: :secret
+
 
   private
 
