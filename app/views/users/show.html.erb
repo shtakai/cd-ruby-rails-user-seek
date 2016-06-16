@@ -1,14 +1,13 @@
 <h2><%= @user.name %></h2>
 
 New Secret
-<form action="" method="POST">
-  <input type="text" name="authenticity_token" value="<%= form_authenticity_token %>">
+<form action="/secrets" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <label for="secret[content]">New Secret</label>
   <textarea id="secret[content]" name="secret[content]" cols="30" rows="10"></textarea>
   <input type="submit" value="Create Secret">
 </form>
 
-<button></button>
 
 
 <div class="">
