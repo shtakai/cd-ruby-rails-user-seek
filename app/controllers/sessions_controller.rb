@@ -4,17 +4,18 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by_email(params[:user][:email])
-
-    p params[:user][:email]
-    p params[:user][:password]
-    p @user
     if @user.authenticate(params[:user][:password])
-      session[:user] = @user.id
+      session[:user_id] = @user.id
       redirect_to "/users/#{@user.id}"
     else
       session.clear
       flash[:alert] = 'Invalid'
       render 'sessions/new'
     end
+  end
+
+  def destroy
+    session.clear
+    redirect_to '/sessions/new'
   end
 end
