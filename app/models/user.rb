@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   validates :email, format:{with: EMAIL_REGEX, multiline: true}
 
+  has_many :secrets
+
   private
 
   def downcase_email
