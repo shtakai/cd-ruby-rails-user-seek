@@ -31,6 +31,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find_by_id(params[:id])
+    session.clear
+    redirect_to "/sessions/new"
+  end
+
   private
 
   def user_params
