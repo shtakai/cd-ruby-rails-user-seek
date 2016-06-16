@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
     User.find(session[:user_id]) if session[:user_id]
   end
 
+  def require_login
+    redirect_to '/sessions/new' if session[:user_id].blank?
+  end
+
   helper_method :current_user
 
 end
