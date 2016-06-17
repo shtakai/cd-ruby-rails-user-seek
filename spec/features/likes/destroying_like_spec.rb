@@ -21,6 +21,7 @@ RSpec.describe 'displaying likes' do
 
   it 'deletes like and displays the changes in both profile and secrets page' do
     visit '/secrets'
+    expect(page).to have_button 'Unlike'
     click_button 'Unlike'
     expect(current_path).to eq '/secrets'
     expect(page).not_to have_button 'Unlike'
@@ -32,7 +33,7 @@ RSpec.describe 'displaying likes' do
   it 'creates like and displays it both in profile and secret page' do
     visit '/secrets'
     click_button 'Like'
-    except(curret_path).to eq '/secrets'
+    expect(current_path).to eq '/secrets'
     expect(page).not_to have_button 'Like'
     expect(page).not_to have_text '0 likes'
     visit "/users/#{@user.id}"
