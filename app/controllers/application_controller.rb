@@ -11,6 +11,11 @@ class ApplicationController < ActionController::Base
     redirect_to '/sessions/new' if session[:user_id].blank?
   end
 
+  def require_correct_user
+    user = User.find(params[:id])
+    redirect_to "/users/#{current_user.id}" if current_user != user
+  end
+
   helper_method :current_user
 
 end

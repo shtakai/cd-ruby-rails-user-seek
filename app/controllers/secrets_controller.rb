@@ -13,11 +13,9 @@ class SecretsController < ApplicationController
   end
 
   def destroy
-    @user = current_user
-    secret = @user.secrets.where(id: params[:id]).last
-    @secret_id = secret.id
-    secret.destroy
-    redirect_to "/users/#{@user.id}"
+    secret = Secret.find params[:id]
+    secret.destroy if secret.user == current_user
+    redirect_to "/users/#{current_user.id}"
   end
   private
 
