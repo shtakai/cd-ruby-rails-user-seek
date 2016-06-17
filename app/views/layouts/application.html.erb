@@ -13,6 +13,7 @@
       <p><%= e %></p>
     <% end %>
   <% end %>
+  <p><%= flash[:info] %></p>
   <% if current_user %>
     <form action='/sessions' method='POST'>
       <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>

@@ -13,7 +13,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to "/users/#{@user.id}"
+      flash[:info] = 'Registered your account, please login.'
+      redirect_to "/sessions/new"
     else
       flash[:errors] = @user.errors.messages
       redirect_to '/users/new'
