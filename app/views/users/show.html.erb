@@ -16,6 +16,9 @@ New Secret
     <% @user.secrets.each do |secret| %>
       <li >
         <%= secret.content %>
+        <p>
+        <%= secret.likes.size %> likes
+        </p>
         <form action="/secrets/<%= secret.id %>" method="POST">
           <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
           <input type="hidden" name="_method" value="DELETE">
